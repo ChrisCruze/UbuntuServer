@@ -40,3 +40,13 @@ services:
       - 9091
     labels:
       org.label-schema.group: "monitoring"
+  datascience-notebook:
+      image: jupyter/datascience-notebook
+      ports:
+        - 8888:8888
+      container_name: datascience-notebook-container
+  grafana:
+    image: grafana/grafana:6.1.6
+    container_name: grafana
+    ports:
+        - "3000:3000"
