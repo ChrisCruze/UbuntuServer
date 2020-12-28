@@ -10,6 +10,8 @@ import jobs
 import time
 import traceback
 import json
+import robin_stocks as r
+
 server = Flask(__name__)
 api = Api(server)
 CORS(server)
@@ -90,6 +92,15 @@ api.add_resource(Start, '/start/<string:file_id>')
 
 
 
+
+
+class Robinhood(Resource):
+    def get(self):
+        args = request.args
+        return args
+        login = r.login('joshsmith@email.com','password')
+
+api.add_resource(Robinhood, '/robinhood/')
 
 
 @server.route("/")
