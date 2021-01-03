@@ -17,6 +17,19 @@ api = Api(server)
 CORS(server)
 
 
+
+class ExpoNotify(Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('argument')
+        parser.add_argument('json', location=['json'])
+        parser.add_argument('form', location=['form'])
+        parser.add_argument('values', location=['values'])
+        args = parser.parse_args()
+        return args 
+
+api.add_resource(ExpoNotify, '/ExpoNotify/')
+
 """
 Below are the API definitions
 """
