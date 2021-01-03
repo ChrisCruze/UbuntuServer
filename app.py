@@ -26,6 +26,7 @@ class ExpoNotify(Resource):
             parser.add_argument('title')
             parser.add_argument('body')
             args = parser.parse_args()
+            return args
             payload = """{
             "to":"{}",
             "title":"{}",
