@@ -1,0 +1,7 @@
+@reboot /usr/bin/bash /home/triton/UbuntuServer/ngrok.sh
+@reboot /usr/bin/bash /home/triton/UbuntuServer/ngrok_http.sh
+#0 6 * * * /usr/bin/python3 /home/triton/news-scrapers/breitbart.py
+#0 6 * * * /usr/bin/python3 /home/triton/news-scrapers/cnn.py
+#0 6 * * * /usr/bin/python3 /home/triton/news-scrapers/foxnews.py
+#0 6 * * * /usr/bin/python3 /home/triton/news-scrapers/politico.py
+##0 6 * * * /usr/bin/python3 /home/triton/news-scrapers/reuters.py
