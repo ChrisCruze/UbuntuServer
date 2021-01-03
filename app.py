@@ -20,34 +20,29 @@ CORS(server)
 
 class ExpoNotify(Resource):
     def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('argument')
-        parser.add_argument('json', location=['json'])
-        parser.add_argument('headers', location=['headers'])
+        try:
+            parser = reqparse.RequestParser()
+            parser.add_argument('token')
+            parser.add_argument('title')
+            parser.add_argument('body')
+            args = parser.parse_args()
+            payload = """{
+            "to":"{}",
+            "title":"{}",
+            "body":"{}",
+            "sound": "default",
+            "_displayInForeground": "true"
+            }""".format(args['token'],args['title'],args['body'])
 
-        parser.add_argument('form', location=['form'])
-        parser.add_argument('values', location=['values'])
-        args = parser.parse_args()
-        return args 
+            headers = {
+            'Content-Type': 'application/json'
+            }
+            requests.post('https://exp.host/--/api/v2/push/send',data=payload,headers=headers)
+            return args 
+        except Exception as err:
+            error_message = traceback.format_exc()
+            return error_message
 
-    def post(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('argument')
-        parser.add_argument('json', location=['json'])
-        parser.add_argument('form', location=['form'])
-        parser.add_argument('headers', location=['headers'])
-        parser.add_argument('values', location=['values'])
-        args = parser.parse_args()
-        return args 
-    def put(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('argument')
-        parser.add_argument('json', location=['json'])
-        parser.add_argument('form', location=['form'])
-        parser.add_argument('headers', location=['headers'])
-        parser.add_argument('values', location=['values'])
-        args = parser.parse_args()
-        return args 
 api.add_resource(ExpoNotify, '/ExpoNotify/')
 
 """
