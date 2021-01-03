@@ -11,7 +11,6 @@ import time
 import traceback
 import json
 import robin_stocks as r
-
 server = Flask(__name__)
 api = Api(server)
 CORS(server)
@@ -26,7 +25,7 @@ class ExpoNotify(Resource):
             parser.add_argument('title')
             parser.add_argument('body')
             args = parser.parse_args()
-            return args
+            args = json.loads(args)
             payload = """{
             "to":"{}",
             "title":"{}",
