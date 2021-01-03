@@ -26,12 +26,12 @@ class ExpoNotify(Resource):
             parser.add_argument('body')
             args = parser.parse_args()
             payload = """{
-            "to":"ExponentPushToken[{}]",
-            "title":"{}",
-            "body":"{}",
+            "to":"TOKEN",
+            "title":"TITLE",
+            "body":"BODY",
             "sound": "default",
             "_displayInForeground": "true"
-            }""".format(args['token'],args['title'],args['body'])
+            }""".replace('TOKEN',args['token']).replace('TITLE',args['title']).replace('BODY',args['body']) 
 
             headers = {
             'Content-Type': 'application/json'
