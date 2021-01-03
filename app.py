@@ -23,11 +23,31 @@ class ExpoNotify(Resource):
         parser = reqparse.RequestParser()
         parser.add_argument('argument')
         parser.add_argument('json', location=['json'])
+        parser.add_argument('headers', location=['headers'])
+
         parser.add_argument('form', location=['form'])
         parser.add_argument('values', location=['values'])
         args = parser.parse_args()
         return args 
 
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('argument')
+        parser.add_argument('json', location=['json'])
+        parser.add_argument('form', location=['form'])
+        parser.add_argument('headers', location=['headers'])
+        parser.add_argument('values', location=['values'])
+        args = parser.parse_args()
+        return args 
+    def put(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('argument')
+        parser.add_argument('json', location=['json'])
+        parser.add_argument('form', location=['form'])
+        parser.add_argument('headers', location=['headers'])
+        parser.add_argument('values', location=['values'])
+        args = parser.parse_args()
+        return args 
 api.add_resource(ExpoNotify, '/ExpoNotify/')
 
 """
